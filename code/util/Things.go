@@ -3,11 +3,12 @@ package utility
 import (
 	"fmt"
 	"strconv"
+	"sync"
 )
 
 // Thing is a thing which a function can do and finish (done)
 type Thing interface {
-	Do()
+	DoWithWG()
 	Done()
 	MakePacket() Packet
 }
@@ -18,14 +19,17 @@ type AThing struct {
 	Thread    int
 }
 
-// AThing's Do() just prints its thingtyp, thread and state
-func (thing AThing) Do() {
-	fmt.Printf("|%s|%d|Working...|", thing.ThingType, thing.Thread)
+// DoWithWG just prints its thingtyp, thread and state
+// but does so with a defer waitgroup
+func (thing AThing) DoWithWG(wg *sync.WaitGroup) {
+	defer wg.Done()
+	fmt.Printf("|%s|%d|W|", thing.ThingType, thing.Thread)
+	thing.Done()
 }
 
-// AThing's Done() just prints its thingtype, thread and state
+// Done just prints its thingtype, thread and state
 func (thing AThing) Done() {
-	fmt.Printf("|%s|%d|Done|", thing.ThingType, thing.Thread)
+	fmt.Printf("|%s|%d|D|", thing.ThingType, thing.Thread)
 }
 
 // MakePacket simply returns a packet
