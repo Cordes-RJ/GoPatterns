@@ -12,13 +12,13 @@ func intro00GoRoutines() {
 	}
 	// continue to do other things
 	for i := 0; i < 5; i++ {
-		fmt.Print("|Other Thing|")
+		fmt.Printf("|[%d]Other Thing|", i)
 	}
 	time.Sleep(1 * time.Millisecond)
 }
 
 func intro00doTheseThings() {
-	fmt.Print("|The Thing|")
+	fmt.Printf("|The Thing|")
 }
 
 // Goroutines are unique to go, though other languages have similar primitives
