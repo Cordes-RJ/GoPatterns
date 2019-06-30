@@ -21,7 +21,7 @@ import (
 // Intro05primitiveA .
 func Intro05primitiveA(ct int) {
 	Increment := func(a *int, b *bool, wg *sync.WaitGroup) {
-		time.Sleep(5 * time.Nanosecond)
+		time.Sleep(1 * time.Nanosecond)
 		defer wg.Done()
 		*a++
 		*b = true
