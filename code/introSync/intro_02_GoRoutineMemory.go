@@ -1,4 +1,4 @@
-package intro
+package introSync
 
 import (
 	"fmt"
