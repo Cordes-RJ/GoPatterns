@@ -14,7 +14,8 @@ import (
 // connection. We want to re-use this kind of asset not destroy and remake it.
 // Sync offers a concurrent safe implementation through the pool method.
 
-// // NOTE: I'll do a comparison func at a later date, time permitting. [x]
+// // NOTE: I'll do a better comparison func at a later date, time permitting.
+
 // Intro06ExpensiveObj is a simple object that is produced from an expensive
 // maker function.
 type Intro06ExpensiveObj struct {
@@ -91,3 +92,8 @@ func Intro06PoolComparison(workerCt, loops, cost int) {
 // decrease runtime by an order of magnitude, it does not display the range of
 // its effects in an appropriate manner. Pool not only reduces runtime but also
 // reduces memory allocation and cpu burden.
+
+// a few things to note:
+// if you change the state of an object you got from the pool, it will not
+// revert back to its previous state upon return.
+// Defer put every time you use get else the pool is useless
