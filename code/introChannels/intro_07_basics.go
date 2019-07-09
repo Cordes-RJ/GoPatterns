@@ -16,7 +16,6 @@ import (
 
 // Intro07ChannelSyntax1 is a basic introduction to channel syntax
 func Intro07ChannelSyntax1() {
-	fmt.Println("testing")
 	var pipe chan int     // [1]
 	pipe = make(chan int) // [2]
 	//
